@@ -11,49 +11,44 @@ import java.util.List;
 @RestController
 
 public class DemoController {
+    public DemoController() throws FileNotFoundException {
+    }
+
     @RequestMapping("/")
     public String welcomePage() {
         return "Welcome";
     }
+    // <br/> чтобы сделать на разных строках
+    // String f = "a" + "<br/>" + "100";
+    // метод который принимает имя и csv и читает из csv только нужное имя и создает лист - написать позже
+
+    // метод рид должен возвращать лист из всех объектов из csv
+    //метод написать отдельно и вызвать его в printPecord
+
+    public List<Employee> read(String fileName) throws IOException {
+        BufferedReader writer = new BufferedReader(new FileReader(fileName));
+        String line = writer.readLine();
+        List<Employee> employees = new ArrayList<>();
+        for (; line != null; line = writer.readLine()) {
+            String[] salaries = line.split(";");
+            employees.add(new Employee(salaries[0], salaries[1], salaries[2]));
+        }
+        return employees;
+    }
 
     @RequestMapping("/thewall/{name}")
-
     public String printPecord(@PathVariable String name) throws IOException {
-        BufferedReader reader = new BufferedReader(new FileReader("salary.csv"));
-        String line = reader.readLine();
-        String[] salaries = line.split(";");
-        String fio = salaries[0];
-        List<String> fios = new ArrayList<>();
-        fios.add(fio);
-        PrintStream csv = new PrintStream(fio + ".csv");
-
-        for (; line != null; line = reader.readLine()) {
-            salaries = line.split(";");
-            String currentFio = salaries[0];
-            if (!fio.equals(currentFio)) {
-                fio = currentFio;
-                fios.add(fio);
-                csv = new PrintStream(fio + ".csv");
-            }
-            for (int i = 1; i < salaries.length; i++) {
-                if (i == salaries.length - 1) {
-                    csv.println(salaries[i]);
-
-                } else {
-                    csv.print(salaries[i] + ";");
-                }
+        List<Employee> employeeList = read("salary.csv");
+        String result = "";
+        int count = 0;
+        for (int i = 0; i < employeeList.size(); i++) {
+            if (employeeList.get(i).getName().equals(name)) {
+                count = count + 1;
+                result = result + employeeList.get(i).getMonth() + ";" + employeeList.get(i).getSalary() + "<br/>";
             }
         }
-        String result = "";
-        for (int i = 0; i < fios.size(); i++) {
-            if (name.equals(fios.get(i))) {
-                BufferedReader read = new BufferedReader(new FileReader(fios.get(i) + ".csv"));
-                result = "";
-                String salary = read.readLine();
-                for (; salary != null; salary = read.readLine()) {
-                    result = result + salary;
-                }
-            }
+        if (count == 0) {
+            result = "данных по имени " + name + " не найдено";
         }
         return result;
     }
