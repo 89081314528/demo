@@ -30,8 +30,7 @@ public class DemoController {
         String line = writer.readLine();
         List<Employee> employees = new ArrayList<>();
         for (; line != null; line = writer.readLine()) {
-            String[] salaries = line.split(";");
-            employees.add(new Employee(salaries[0], salaries[1], salaries[2]));
+            employees.add(new Employee(line));
         }
         return employees;
     }
@@ -42,9 +41,10 @@ public class DemoController {
         String result = "";
         int count = 0;
         for (int i = 0; i < employeeList.size(); i++) {
-            if (employeeList.get(i).getName().equals(name)) {
+            Employee employee = employeeList.get(i);
+            if (employee.getName().equals(name)) {
                 count = count + 1;
-                result = result + employeeList.get(i).getMonth() + ";" + employeeList.get(i).getSalary() + "<br/>";
+                result = result + employee.getMonth() + ";" + employee.getSalary() + "<br/>";
             }
         }
         if (count == 0) {

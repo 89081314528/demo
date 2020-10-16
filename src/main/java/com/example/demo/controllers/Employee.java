@@ -17,9 +17,10 @@ public class Employee {
         return salary;
     }
 
-    public Employee(String name, String month, String salary) {
-        this.name = name;
-        this.month = month;
-        this.salary = salary;
+    public Employee(String salary) {
+        String[] salaries = salary.split(";");
+        this.name = salaries[0];
+        this.month = salaries[1];
+        this.salary = salaries[2];
     }
 }
