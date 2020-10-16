@@ -35,13 +35,32 @@ public class DemoController {
         return employees;
     }
 
-    @RequestMapping("/thewall/{name}")
+//    @RequestMapping("/thewall/{name}")
     public String printPecord(@PathVariable String name) throws IOException {
         List<Employee> employeeList = read("salary.csv");
         String result = "";
         int count = 0;
         for (int i = 0; i < employeeList.size(); i++) {
             Employee employee = employeeList.get(i);
+            if (employee.getName().equals(name)) {
+                count = count + 1;
+                result = result + employee.getMonth() + ";" + employee.getSalary() + "<br/>";
+            }
+        }
+        if (count == 0) {
+            result = "данных по имени " + name + " не найдено";
+        }
+        return result;
+    }
+
+    @RequestMapping("/thewall/{name}")
+    public String printPecord2(@PathVariable String name, String fileName) throws IOException {
+        BufferedReader writer = new BufferedReader(new FileReader("salary.csv"));
+        String line = writer.readLine();
+        String result = "";
+        int count = 0;
+        for (; line != null; line = writer.readLine()) {
+            Employee employee = new Employee(line);
             if (employee.getName().equals(name)) {
                 count = count + 1;
                 result = result + employee.getMonth() + ";" + employee.getSalary() + "<br/>";
