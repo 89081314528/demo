@@ -1,6 +1,6 @@
 package com.example.demo.controllers;
 
-import com.example.demo.repozitories.EmployeeResources;
+import com.example.demo.repozitories.EmployeeService;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -19,10 +19,10 @@ import java.util.List;
 
 public class DemoController2 {
 
-    private final EmployeeResources employeeResources;
+    private final EmployeeService employeeResources;
 
     public DemoController2() {
-        this.employeeResources = new EmployeeResources();
+        this.employeeResources = new EmployeeService();
     }
 
 //    public List<Employee> findAll() throws IOException {

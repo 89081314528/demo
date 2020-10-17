@@ -6,10 +6,10 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class EmployeeResources {
+public class EmployeeService {
     private final EmployeeRepositary employeeRepositary;
 
-    public EmployeeResources() {
+    public EmployeeService() {
         this.employeeRepositary = new EmployeeRepositary();
     }
     public List<Employee> findByName(String name) throws IOException {
