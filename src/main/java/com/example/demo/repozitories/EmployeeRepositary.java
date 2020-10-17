@@ -1,4 +1,4 @@
-package com.example.demo.repozitaries;
+package com.example.demo.repozitories;
 
 import com.example.demo.controllers.Employee;
 
