@@ -1,5 +1,6 @@
 package com.example.demo.controllers;
 
+import com.example.demo.repozitories.EmployeeRepositary;
 import com.example.demo.repozitories.EmployeeService;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,13 +19,11 @@ import java.util.List;
 @RestController
 
 public class DemoController2 {
+private final EmployeeService employeeService;
 
-    private final EmployeeService employeeResources;
-
-    public DemoController2() {
-        this.employeeResources = new EmployeeService();
+    public DemoController2(EmployeeService employeeService) {
+        this.employeeService = employeeService;
     }
-
 //    public List<Employee> findAll() throws IOException {
 //        BufferedReader writer = new BufferedReader(new FileReader("salary.csv"));
 //        String line = writer.readLine();
@@ -49,7 +48,7 @@ public class DemoController2 {
 
     @RequestMapping("/salary/{name}")
     public String printRecord(@PathVariable String name) throws IOException {
-        List<Employee> employeeByName = employeeResources.findByName(name);
+        List<Employee> employeeByName = employeeService.findByName(name);
         String result = "";
         for (int i = 0; i < employeeByName.size(); i++) {
             Employee employee = employeeByName.get(i);
