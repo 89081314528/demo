@@ -1,7 +1,7 @@
 package com.example.demo.controllers;
 
-import com.example.demo.repozitories.EmployeeRepositary;
 import com.example.demo.repozitories.EmployeeService;
+import com.example.demo.repozitories.EmployeeServiceImpl;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -16,7 +16,7 @@ import java.util.List;
 // сделать в этом классе метод findall такой же как в контроллере
 //добавить в контроллер зависимость от employeeRepozitory
 // использовать в контроллере метод findall из employeeRepozitory
-@RestController
+@RestController // аннотация
 
 public class DemoController2 {
 private final EmployeeService employeeService;
