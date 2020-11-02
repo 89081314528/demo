@@ -6,16 +6,16 @@ import org.springframework.stereotype.Service;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-@Service
+@Service // говорит, что объект этого класса спринг создаст сам
 public class EmployeeServiceImpl implements EmployeeService{
-    public EmployeeServiceImpl(EmployeeRepositaryImpl employeeRepositaryImpl) {
-        this.employeeRepositaryImpl = employeeRepositaryImpl;
+    public EmployeeServiceImpl(EmployeeRepositary employeeRepositary) {
+        this.employeeRepositary = employeeRepositary;
     }
 
-    private final EmployeeRepositaryImpl employeeRepositaryImpl;
+    private final EmployeeRepositary employeeRepositary;
 
     public List<Employee> findByName(String name) throws IOException {
-        List<Employee> employeeAll = employeeRepositaryImpl.findAll();
+        List<Employee> employeeAll = employeeRepositary.findAll();
         List<Employee> employeeByName = new ArrayList<>();
         for (int i = 0; i < employeeAll.size(); i++) {
             Employee employee = employeeAll.get(i);

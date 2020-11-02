@@ -7,4 +7,7 @@ import java.util.List;
 
 public interface EmployeeService {
     public List<Employee> findByName(String name) throws IOException;
+    //в интерфейсе нет тела метода
 }
+//тип возвращаемого значения не входит в сигнатуру метода. нельзя создать два метода с одинаковым названием и
+// параметрами
