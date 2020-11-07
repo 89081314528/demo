@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
-public class SalaryServiceImpl {
+public class SalaryServiceImpl implements SalaryService{
     private final SalaryRepository salaryRepository;
 
     public SalaryServiceImpl(SalaryRepository salaryRepository) {
