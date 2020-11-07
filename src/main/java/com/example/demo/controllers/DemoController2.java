@@ -1,13 +1,16 @@
 package com.example.demo.controllers;
 
+import com.example.demo.enteties.Salary;
+import com.example.demo.repositories.SalaryRepository;
 import com.example.demo.repozitories.EmployeeService;
-import com.example.demo.repozitories.EmployeeServiceImpl;
+import com.example.demo.service.SalaryService;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.io.*;
 import java.util.List;
+
 //№ 2 find by name принимает параметром строку с именем и возвращает лист отфильтрованный по имени
 //№ 3 find all возвращает полный лист, без входных параметров
 // №1 - принт рекорд, вызывает find by name, find by name вызывает all
@@ -19,32 +22,13 @@ import java.util.List;
 @RestController // аннотация
 
 public class DemoController2 {
-private final EmployeeService employeeService;
+    private final SalaryService salaryService;
+    private final EmployeeService employeeService;
 
-    public DemoController2(EmployeeService employeeService) {
+    public DemoController2(SalaryService salaryService, EmployeeService employeeService) {
+        this.salaryService = salaryService;
         this.employeeService = employeeService;
     }
-//    public List<Employee> findAll() throws IOException {
-//        BufferedReader writer = new BufferedReader(new FileReader("salary.csv"));
-//        String line = writer.readLine();
-//        List<Employee> employees = new ArrayList<>();
-//        for (; line != null; line = writer.readLine()) {
-//            employees.add(new Employee(line));
-//        }
-//        return employees;
-//    }
-
-//    public List<Employee> findByName(String name) throws IOException {
-//        List<Employee> employeeAll = employeeRepositary.findAll();
-//        List<Employee> employeeByName = new ArrayList<>();
-//        for (int i = 0; i < employeeAll.size(); i++) {
-//            Employee employee = employeeAll.get(i);
-//            if (employee.getName().equals(name)) {
-//                employeeByName.add(employee);
-//            }
-//        }
-//        return employeeByName;
-//    }
 
     @RequestMapping("/salary/{name}")
     public String printRecord(@PathVariable String name) throws IOException {
@@ -59,4 +43,10 @@ private final EmployeeService employeeService;
         }
         return result;
     }
+
+    @RequestMapping("/allSalaries")
+    public List<Salary> showAllSalaries() {
+        return salaryService.findAll();
+    }
+
 }

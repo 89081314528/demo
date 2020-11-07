@@ -13,7 +13,7 @@ public class Salary {
     @Column(name = "last_name")
     String surname;
     @Column(name = "sum")
-    Integer amount;
+    Long amount;
     @Column(name = "passport")
     @Id
     String passportNumber;
@@ -27,7 +27,7 @@ public class Salary {
         this.surname = surname;
     }
 
-    public void setAmount(Integer amount) {
+    public void setAmount(Long amount) {
         this.amount = amount;
     }
 
@@ -43,7 +43,7 @@ public class Salary {
         return surname;
     }
 
-    public Integer getAmount() {
+    public Long getAmount() {
         return amount;
     }
 
