@@ -44,11 +44,6 @@ public class DemoController2 {
         return result;
     }
 
-    @RequestMapping("/allSalaries")
-    public List<Salary> showAllSalaries() {
-        return salaryService.findAll();
-    }
-
     @RequestMapping("/allPersons")
     public List<Person> showAllPersons() {
         return salaryService.findAllPerson();

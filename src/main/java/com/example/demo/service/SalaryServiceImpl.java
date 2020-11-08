@@ -19,17 +19,13 @@ public class SalaryServiceImpl implements SalaryService {
         this.salaryRepository = salaryRepository;
     }
 
-
-    public List<Salary> findAll() {
-        return salaryRepository.findAll();
-    }
-
     public List<Person> findAllPerson() {
         List<Person> personList = new ArrayList<>();
         List<Salary> salaryList = salaryRepository.findAll();
         for (int i = 0; i < salaryList.size(); i++) {
-            personList.add(new Person(salaryList.get(i).getName(),salaryList.get(i).getSurname(), salaryList.get(i).getAmount(),
-                    salaryList.get(i).getPassportNumber()));
+            Salary salary = salaryList.get(i);
+            personList.add(new Person(salary.getName(), salary.getSurname(), salary.getAmount(),
+                    salary.getPassportNumber()));
 
         }
         return personList;
