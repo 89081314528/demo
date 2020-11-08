@@ -49,4 +49,13 @@ public class DemoController2 {
         return salaryService.findAll();
     }
 
+    @RequestMapping("/allPersons")
+    public List<Person> showAllPersons() {
+        return salaryService.findAllPerson();
+    }
+
+    @RequestMapping("/salary/passport/{passportNumber}")
+    public Salary printPassportNumber(@PathVariable String passportNumber) throws IOException {
+        return salaryService.findByNumber(passportNumber);
+    }
 }
