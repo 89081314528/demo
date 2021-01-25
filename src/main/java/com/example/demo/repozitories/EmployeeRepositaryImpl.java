@@ -1,6 +1,6 @@
 package com.example.demo.repozitories;
 
-import com.example.demo.controllers.Employee;
+import com.example.demo.dto.Employee;
 import org.springframework.stereotype.Repository;
 
 import java.io.BufferedReader;

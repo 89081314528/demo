@@ -1,9 +1,8 @@
-package com.example.demo.controllers;
+package com.example.demo.dto;
 
 public class Person {
     final String name;
     final String surname;
-    final Long amount;
     final String passportNumber;
 
     public String getName() {
@@ -14,18 +13,13 @@ public class Person {
         return surname;
     }
 
-    public Long getAmount() {
-        return amount;
-    }
-
     public String getPassportNumber() {
         return passportNumber;
     }
 
-    public Person(String name, String surname, Long amount, String passportNumber) {
+    public Person(String name, String surname, String passportNumber) {
         this.name = name;
         this.surname = surname;
-        this.amount = amount;
         this.passportNumber = passportNumber;
     }
 }

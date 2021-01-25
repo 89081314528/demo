@@ -1,4 +1,4 @@
-package com.example.demo.controllers;
+package com.example.demo.dto;
 
 public class Employee {
     private final String name;

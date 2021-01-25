@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+    <changeSet  author="Julia"  id="25/02/1">
+        <createTable tableName="salaries">
+            <column name="first_name" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="last_name" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="sum" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="passport_number" type="varchar(11)">
+                <constraints primaryKey="true"/>
+            </column>
+        </createTable>
+
+        <insert tableName="salaries">
+            <column name="first_name">Igor</column>
+            <column name="last_name">Sokolenko</column>
+            <column name="sum">50000</column>
+            <column name="passport_number">2000 202020</column>
+        </insert>
+
+        <insert tableName="salaries">
+            <column name="first_name">Julia</column>
+            <column name="last_name">Gordeeva</column>
+            <column name="sum">400000</column>
+            <column name="passport_number">2004 404040</column>
+        </insert>
+
+        <insert tableName="salaries">
+            <column name="first_name">Pavel</column>
+            <column name="last_name">Petrov</column>
+            <column name="sum">100000</column>
+            <column name="passport_number">2001 101010</column>
+        </insert>
+
+        <insert tableName="salaries">
+            <column name="first_name">Petr</column>
+            <column name="last_name">Pavlov</column>
+            <column name="sum">100000</column>
+            <column name="passport_number">2002 303030</column>
+        </insert>
+    </changeSet>
+</databaseChangeLog>

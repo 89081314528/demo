@@ -1,21 +1,9 @@
-package com.example.demo.enteties;
+package com.example.demo.dto;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
-
-@Entity
-@Table(name = "salaries")
-public class Salary {
-    @Column(name = "first_name")
+public class SalaryDto {
     String name;
-    @Column(name = "last_name")
     String surname;
-    @Column(name = "sum")
     Long amount;
-    @Column(name = "passport_number")
-    @Id
     String passportNumber;
 
 
@@ -35,6 +23,7 @@ public class Salary {
         this.passportNumber = passportNumber;
     }
 
+
     public String getName() {
         return name;
     }
@@ -49,5 +38,13 @@ public class Salary {
 
     public String getPassportNumber() {
         return passportNumber;
+    }
+
+
+    public SalaryDto(String name, String surname, Long amount, String passportNumber) {
+        this.name = name;
+        this.surname = surname;
+        this.amount = amount;
+        this.passportNumber = passportNumber;
     }
 }

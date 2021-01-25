@@ -1,7 +1,8 @@
 package com.example.demo.controllers;
 
-import com.example.demo.enteties.Salary;
-import com.example.demo.repositories.SalaryRepository;
+import com.example.demo.dto.Employee;
+import com.example.demo.dto.Person;
+import com.example.demo.dto.SalaryDto;
 import com.example.demo.repozitories.EmployeeService;
 import com.example.demo.service.SalaryService;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -50,7 +51,7 @@ public class DemoController2 {
     }
 
     @RequestMapping("/salary/passport/{passportNumber}")
-    public Salary printPassportNumber(@PathVariable String passportNumber) throws IOException {
+    public SalaryDto printPassportNumber(@PathVariable String passportNumber) throws IOException {
         return salaryService.findByNumber(passportNumber);
     }
 }
